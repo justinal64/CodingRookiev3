@@ -4,6 +4,6 @@ interface Props {
   name: string;
 }
 
-export default function Welcome(props: Props) {
+export function Header(props: Props) {
   return <h1>Hello, {props.name}</h1>;
 }
