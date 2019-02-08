@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import SimpleCard from "./components/Test";
+import { Spring } from "react-spring";
+import { Transition } from "react-spring";
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -11,6 +14,7 @@ class App extends Component {
           <p>
             Edit <code>src/App.tsx</code> and save to reload.
           </p>
+          <SimpleCard />
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -18,6 +22,9 @@ class App extends Component {
             rel="noopener noreferrer"
           >
             Learn React
+            <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+              {props => <div style={props}>hello</div>}
+            </Spring>
           </a>
         </header>
       </div>
