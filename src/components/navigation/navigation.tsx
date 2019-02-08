@@ -7,8 +7,6 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
 
 const styles = createStyles({
   root: {
@@ -27,15 +25,6 @@ export interface Props extends WithStyles<typeof styles> {}
 
 function ButtonAppBar(props: Props) {
   const { classes } = props;
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  function handleClick(event: any) {
-    setAnchorEl(event.currentTarget);
-  }
-
-  function handleClose() {
-    setAnchorEl(null);
-  }
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -45,18 +34,7 @@ function ButtonAppBar(props: Props) {
             color="inherit"
             aria-label="Menu"
           >
-            <MenuIcon>
-              <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
-              </Menu>
-            </MenuIcon>
+            <MenuIcon />
           </IconButton>
           <Typography variant="h6" color="inherit" className={classes.grow} />
           <Button color="inherit">Tutorials</Button>
