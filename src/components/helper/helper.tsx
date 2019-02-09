@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 type operator = "add" | "subtract" | "multiply" | "divide";
 
@@ -7,25 +7,29 @@ interface Props {
   operator: operator;
 }
 
-export function Math(props: Props) {
-  const { values, operator } = props;
+export function useMath(values: number[], operator: operator) {
+  const [answer, setAnswer] = useState(0);
+
+  const mathAnswerSet = (newValue: number) => setAnswer(newValue);
 
   let add = (val: number[]) => {
-    return val.reduce(
-      (accumulator, currentValue) => accumulator + currentValue
+    mathAnswerSet(
+      val.reduce((accumulator, currentValue) => accumulator + currentValue)
     );
   };
 
   let subtract = (val: number[]) => {
-    return val.reduce(
-      (accumulator, currentValue) => accumulator - currentValue
+    mathAnswerSet(
+      val.reduce((accumulator, currentValue) => accumulator - currentValue)
     );
   };
 
   let calculate = (val: number[], operator: operator) => {
+    let value: number;
     switch (operator) {
       case "add":
-        return add(val);
+        add(val);
+        break;
       case "divide":
         // divide function
         break;
@@ -33,13 +37,9 @@ export function Math(props: Props) {
         // mul function
         break;
       case "subtract":
-        return subtract(val);
+        subtract(val);
+        break;
     }
   };
-  return (
-    <h1>
-      values are {values} and operator is {operator} and the answer =
-      {calculate(values, operator)}
-    </h1>
-  );
+  return answer;
 }
