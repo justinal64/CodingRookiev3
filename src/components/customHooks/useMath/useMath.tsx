@@ -25,14 +25,13 @@ export function useMath(values: number[], operator: operator) {
   };
 
   useEffect(() => {
-    calculate(values, operator);
+    calculate(operator);
   });
 
-  let calculate = (val: number[], operator: operator) => {
-    let value: number;
+  let calculate = (operator: operator) => {
     switch (operator) {
       case "add":
-        add(val);
+        add(values);
         break;
       case "divide":
         // divide function
@@ -41,7 +40,7 @@ export function useMath(values: number[], operator: operator) {
         // mul function
         break;
       case "subtract":
-        subtract(val);
+        subtract(values);
         break;
     }
   };
