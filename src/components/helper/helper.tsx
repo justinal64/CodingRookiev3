@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 type operator = "add" | "subtract" | "multiply" | "divide";
 
@@ -23,6 +23,10 @@ export function useMath(values: number[], operator: operator) {
       val.reduce((accumulator, currentValue) => accumulator - currentValue)
     );
   };
+
+  useEffect(() => {
+    calculate(values, operator);
+  });
 
   let calculate = (val: number[], operator: operator) => {
     let value: number;
