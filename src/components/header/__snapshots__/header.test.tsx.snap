@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render banner text correctly with given strings 1`] = `
+<h1>
+  Hello, 
+  tester
+</h1>
+`;
