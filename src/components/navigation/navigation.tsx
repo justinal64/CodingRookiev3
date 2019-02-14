@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import { Link } from "react-router-dom";
 
 const styles = createStyles({
   root: {
@@ -37,11 +38,14 @@ function ButtonAppBar(props: Props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" color="inherit" className={classes.grow} />
+          <Button color="inherit">API</Button>
           <Button color="inherit">Tutorials</Button>
           <Button color="inherit">Blog</Button>
           <Button color="inherit">Store</Button>
           <Button color="inherit">Login</Button>
-          <Button color="inherit">Sign Up</Button>
+          <Link to="/">
+            <Button color="inherit">Home</Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
