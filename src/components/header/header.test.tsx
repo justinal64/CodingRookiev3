@@ -9,8 +9,8 @@ it("renders without crashing", () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
-it("should render banner text correctly with given strings", () => {
-  const component = shallow(<Header name="testers" />);
+it("Should render Header with name tester", () => {
+  const component = shallow(<Header name="tester" />);
   expect(component).toMatchSnapshot();
 });
 
