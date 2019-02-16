@@ -25,7 +25,7 @@ const styles = createStyles({
 
 export interface Props extends WithStyles<typeof styles> {}
 
-function ButtonAppBar(props: Props) {
+function Navigation(props: Props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
@@ -63,8 +63,8 @@ function ButtonAppBar(props: Props) {
   );
 }
 
-ButtonAppBar.propTypes = {
+Navigation.propTypes = {
   classes: PropTypes.object.isRequired
 } as any;
 
-export default withStyles(styles)(ButtonAppBar);
+export default withStyles(styles)(Navigation);
