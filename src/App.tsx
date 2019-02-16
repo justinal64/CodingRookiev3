@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ButtonAppBar from "./components/navigation/navigation";
+import Navigation from "./components/navigation/navigation";
 import "./App.css";
 import { Header } from "./components/header/header";
 import { useMath } from "./components/customHooks/useMath/useMath";
@@ -19,23 +19,18 @@ export function App() {
   return (
     <Router>
       <div className="App">
-        <ButtonAppBar />
-        <Header name="test" />
-        <h1>Add</h1>
-        {tester}
-        <div>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/api" component={Api} />
-            <Route exact path="/tutorials" component={Tutorials} />
-            <Route exact path="/store" component={Store} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/blog" component={Blog} />
-            <Route exact path="/about" component={About} />
-            <Route component={NoMatch} />
-          </Switch>
-        </div>
+        <Navigation />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/api" component={Api} />
+          <Route exact path="/tutorials" component={Tutorials} />
+          <Route exact path="/store" component={Store} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/blog" component={Blog} />
+          <Route exact path="/about" component={About} />
+          <Route component={NoMatch} />
+        </Switch>
       </div>
     </Router>
   );

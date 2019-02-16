@@ -1,16 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly with no props 1`] = `
-<div
-  className="App"
->
-  <WithStyles(ButtonAppBar) />
-  <Header
-    name="test"
-  />
-  <h1>
-    Add
-  </h1>
-  0
-</div>
+<BrowserRouter>
+  <div
+    className="App"
+  >
+    <WithStyles(ButtonAppBar) />
+    <Header
+      name="test"
+    />
+    <h1>
+      Add
+    </h1>
+    0
+    <div>
+      <Switch>
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/api"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/tutorials"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/store"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/signup"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/login"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/blog"
+        />
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/about"
+        />
+        <Route
+          component={[Function]}
+        />
+      </Switch>
+    </div>
+  </div>
+</BrowserRouter>
 `;
