@@ -13,6 +13,7 @@ import { Signup } from "./pages/signup";
 import { Blog } from "./pages/blog";
 import { About } from "./pages/about";
 import { NoMatch } from "./pages/nomatch";
+import { SpaceX } from "./pages/spacex";
 
 export function App() {
   let tester = useMath([1, 2, 3, 4, 5], "add");
@@ -29,6 +30,7 @@ export function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/blog" component={Blog} />
           <Route exact path="/about" component={About} />
+          <Route exact path="/spacex" component={SpaceX} />
           <Route component={NoMatch} />
         </Switch>
       </div>

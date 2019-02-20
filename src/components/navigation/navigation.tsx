@@ -40,6 +40,12 @@ function Navigation(props: Props) {
           </IconButton>
           <Typography variant="h6" color="inherit" className={classes.grow} />
           <Button color="inherit">
+            <Link to="/">Home</Link>
+          </Button>
+          <Button color="inherit">
+            <Link to="/spacex">SpaceX</Link>
+          </Button>
+          <Button color="inherit">
             <Link to="/api">API</Link>
           </Button>
           <Button color="inherit">
@@ -53,9 +59,6 @@ function Navigation(props: Props) {
           </Button>
           <Button color="inherit">
             <Link to="/login">Login</Link>
-          </Button>
-          <Button color="inherit">
-            <Link to="/">Home</Link>
           </Button>
         </Toolbar>
       </AppBar>
