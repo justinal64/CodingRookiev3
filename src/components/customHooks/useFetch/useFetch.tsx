@@ -13,10 +13,23 @@ export interface jsondata {
   details: string;
 }
 
-export function useFetch(url: string) {
-  const [data, setData] = useState(null);
+let jsonData: jsondata = {
+  username: "",
+  first_name: "",
+  last_name: "",
+  kids: 0,
+  spouse: "",
+  missions: {
+    name: "",
+    flight: 0
+  },
+  details: ""
+};
 
-  const setSpacexData = (newData: any) => setData(newData); // fix any......
+export function useFetch(url: string) {
+  const [data, setData] = useState(jsonData);
+
+  const setSpacexData = (newData: jsondata) => setData(newData);
 
   useEffect(() => {
     fetchData("Test");
@@ -26,7 +39,6 @@ export function useFetch(url: string) {
     fetch("data.json") // runs command from the public folder.
       .then(res => res.json())
       .then(data => {
-        console.log("data:", data);
         setSpacexData(data);
       });
   };
