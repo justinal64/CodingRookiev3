@@ -26,6 +26,12 @@ export const Calculator = () => {
   let Divide = () => {
     console.log("You clicked the Divide button");
   };
+
+  // function to check data
+  let verifyInput = () => {
+    // this function should test that the data is a valid number if not return 0
+  };
+
   return (
     <div>
       <div>
@@ -57,6 +63,7 @@ export const Calculator = () => {
       </div>
       <div>
         <div>
+          {/* Do not use the validateInput function with this section */}
           <h2>Calculator with bugs</h2>
           <Button variant="contained" color="primary" onClick={Add}>
             Add
