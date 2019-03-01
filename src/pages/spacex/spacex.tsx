@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useFetch } from "../components/customHooks/useFetch/useFetch";
-import "../styles/SpaceX.css";
-import { array } from "prop-types";
+import { useFetch } from "../../components/customHooks/useFetch/useFetch";
+import "../../styles/SpaceX.css";
 
 export const SpaceX = () => {
   const data = useFetch();
@@ -9,7 +8,8 @@ export const SpaceX = () => {
   if (data) {
     console.log("data = ", data);
   }
-  let test = (arrayToMap: any) => {
+
+  let test = (arrayToMap: string[]) => {
     let result: JSX.Element[] = [];
     {
       arrayToMap.map((ele: string, index: number) => {
