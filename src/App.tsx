@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Navigation from "./components/navigation/navigation";
-import "./App.css";
+import "./styles/App.css";
 import { Header } from "./components/header/header";
 import { useMath } from "./components/customHooks/useMath/useMath";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
@@ -14,6 +14,7 @@ import { Blog } from "./pages/blog";
 import { About } from "./pages/about";
 import { NoMatch } from "./pages/nomatch";
 import { SpaceX } from "./pages/spacex";
+import { Calculator } from "./pages/calculator";
 
 export function App() {
   let tester = useMath([1, 2, 3, 4, 5], "add");
@@ -31,6 +32,7 @@ export function App() {
           <Route exact path="/blog" component={Blog} />
           <Route exact path="/about" component={About} />
           <Route exact path="/spacex" component={SpaceX} />
+          <Route exact path="/calculator" component={Calculator} />
           <Route component={NoMatch} />
         </Switch>
       </div>

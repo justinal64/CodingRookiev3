@@ -44,7 +44,11 @@ export function useFetch() {
     fetch("https://api.spacexdata.com/v3/launches/latest") // runs command from the public folder.
       .then(res => res.json())
       .then(data => {
-        setSpacexData(data.links);
+        let tempArray: any = [];
+        data.links["flickr_images"].map((ele: string, index: number) => {
+          tempArray.push(ele);
+        });
+        setSpacexData(tempArray);
       });
   }, []);
 

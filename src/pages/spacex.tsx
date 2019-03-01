@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useFetch } from "../components/customHooks/useFetch/useFetch";
+import "../styles/SpaceX.css";
+import { array } from "prop-types";
 
 export const SpaceX = () => {
   const data = useFetch();
-  let array = [1, 2, 3, 4, 5];
 
+  if (data) {
+    console.log("data = ", data);
+  }
   let test = (arrayToMap: any) => {
     let result: JSX.Element[] = [];
     {
-      Object.keys(data || []).map((element: any, index) => {
-        result.push(
-          <div key={index}>
-            <a href={data[element]}>{data[element]}</a>
-          </div>
-        );
+      arrayToMap.map((ele: string, index: number) => {
+        // arrayToMap.map((ele: any, index: any) => { // talk about what happens if the type is any.....
+        if (ele.includes("jpg") || ele.includes("png")) {
+          result.push(
+            <div key={index}>
+              <img src={ele} />
+            </div>
+          );
+        }
       });
     }
     return result;
@@ -22,7 +29,7 @@ export const SpaceX = () => {
   return (
     <div>
       <h2>SpaceX</h2>
-      {test(data)}
+      {test(data || [])}
     </div>
   );
 };
