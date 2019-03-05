@@ -79,12 +79,14 @@ export const Calculator = () => {
         </Button>
         <div>
           <input
+            className="input0"
             value={input0}
             onChange={e => {
               if (e.target.value) setInput0(parseInt(e.target.value));
             }}
           />
           <input
+            className="input1"
             value={input1}
             onChange={e => {
               if (e.target.value) setInput1(parseInt(e.target.value));
