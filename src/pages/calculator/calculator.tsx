@@ -9,23 +9,23 @@ export const Calculator = () => {
   const [input1, setInput1] = useState(0);
   const [input2, setInput2] = useState(buggyInitialState);
   const [input3, setInput3] = useState(buggyInitialState);
+  let [result, setResult] = useState(0);
+
   let Add = (num: any, num2: any) => {
     // I have to use type :any to show the bug
-    console.log("You clicked the add button");
-    console.log("input0 + input0 =  ", num + num2);
+    setResult(num + num2);
   };
 
-  let Subtract = () => {
-    console.log("You clicked the Subtract button");
-    console.log("input0 - input0 =  ", input0 - input1);
+  let Subtract = (num: any, num2: any) => {
+    setResult(num - num2);
   };
 
-  let Multiply = () => {
-    console.log("You clicked the Multiple button");
+  let Multiply = (num: any, num2: any) => {
+    setResult(num * num2);
   };
 
-  let Divide = () => {
-    console.log("You clicked the Divide button");
+  let Divide = (num: any, num2: any) => {
+    setResult(num / num2);
   };
 
   // function to check data
@@ -38,7 +38,7 @@ export const Calculator = () => {
   };
 
   return (
-    <div>
+    <div className="calculator">
       <div>
         <h2>Calculator working correctly</h2>
         <Button
@@ -54,7 +54,7 @@ export const Calculator = () => {
           variant="contained"
           color="primary"
           onClick={() => {
-            if (verifyInput()) Subtract();
+            if (verifyInput()) Subtract(input0, input1);
           }}
         >
           Subtract
@@ -63,7 +63,7 @@ export const Calculator = () => {
           variant="contained"
           color="primary"
           onClick={() => {
-            if (verifyInput()) Multiply();
+            if (verifyInput()) Multiply(input0, input1);
           }}
         >
           Multiply
@@ -72,7 +72,7 @@ export const Calculator = () => {
           variant="contained"
           color="primary"
           onClick={() => {
-            if (verifyInput()) Divide();
+            if (verifyInput()) Divide(input0, input1);
           }}
         >
           Divide
@@ -81,12 +81,14 @@ export const Calculator = () => {
           <input
             value={input0}
             onChange={e => {
-              setInput0(parseInt(e.target.value));
+              if (e.target.value) setInput0(parseInt(e.target.value));
             }}
           />
           <input
             value={input1}
-            onChange={e => setInput1(parseInt(e.target.value))}
+            onChange={e => {
+              if (e.target.value) setInput1(parseInt(e.target.value));
+            }}
           />
         </div>
       </div>
@@ -101,13 +103,25 @@ export const Calculator = () => {
           >
             Add
           </Button>
-          <Button variant="contained" color="primary" onClick={Subtract}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => Subtract(input2, input3)}
+          >
             Subtract
           </Button>
-          <Button variant="contained" color="primary" onClick={Multiply}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => Multiply(input2, input3)}
+          >
             Multiply
           </Button>
-          <Button variant="contained" color="primary" onClick={Divide}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => Divide(input2, input3)}
+          >
             Divide
           </Button>
           <div>
@@ -119,6 +133,11 @@ export const Calculator = () => {
             />
             <input value={input3} onChange={e => setInput3(e.target.value)} />
           </div>
+        </div>
+        <div className="result">
+          <p>
+            Result is <span>{result}</span>
+          </p>
         </div>
       </div>
     </div>
