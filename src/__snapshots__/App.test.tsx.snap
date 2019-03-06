@@ -49,6 +49,16 @@ exports[`should render correctly with no props 1`] = `
       />
       <Route
         component={[Function]}
+        exact={true}
+        path="/spacex"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/calculator"
+      />
+      <Route
+        component={[Function]}
       />
     </Switch>
   </div>

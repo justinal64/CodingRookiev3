@@ -43,6 +43,9 @@ function Navigation(props: Props) {
             <Link to="/">Home</Link>
           </Button>
           <Button color="inherit">
+            <Link to="/calculator">Calculator</Link>
+          </Button>
+          <Button color="inherit">
             <Link to="/spacex">SpaceX</Link>
           </Button>
           <Button color="inherit">
