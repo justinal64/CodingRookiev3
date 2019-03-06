@@ -42,6 +42,7 @@ export const Calculator = () => {
       <div>
         <h2>Calculator working correctly</h2>
         <Button
+          className="add"
           variant="contained"
           color="primary"
           onClick={() => {
