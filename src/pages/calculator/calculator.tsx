@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, TextField } from "@material-ui/core";
 import "../../styles/Calculator.css";
-
+import { Add, Subtract, Multiply, Divide } from "../../helper.js/helper";
 let buggyInitialState: any = 0;
 
 export const Calculator = () => {
@@ -9,24 +9,8 @@ export const Calculator = () => {
   const [input1, setInput1] = useState(0);
   const [input2, setInput2] = useState(buggyInitialState);
   const [input3, setInput3] = useState(buggyInitialState);
+  const [counter, updateCount] = useState(0);
   let [result, setResult] = useState(0);
-
-  let Add = (num: any, num2: any) => {
-    // I have to use type :any to show the bug
-    setResult(num + num2);
-  };
-
-  let Subtract = (num: any, num2: any) => {
-    setResult(num - num2);
-  };
-
-  let Multiply = (num: any, num2: any) => {
-    setResult(num * num2);
-  };
-
-  let Divide = (num: any, num2: any) => {
-    setResult(num / num2);
-  };
 
   // function to check data
   let verifyInput = (): Boolean => {

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { act } from "react-dom/test-utils";
-import Counter from "./useCounter";
+import Counter from "./Counter";
 
 describe("Counter with React test utils", () => {
   const container = document.createElement("div");

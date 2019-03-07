@@ -45,43 +45,37 @@ describe("Calculator with React test utils", () => {
     expect(input0.value).toEqual("1");
     expect(input1.value).toEqual("1");
   });
+});
 
-  it("add function working", () => {
-    const wrapper = mount(<Calculator />);
-    const button = wrapper.find("button").at(0);
-    input0.value = 1;
-    input1.value = 1;
-    // neither one works
-    // button.simulate("click");
+describe("Counter with React test utils", () => {
+  const container = document.createElement("div");
+  document.body.appendChild(container);
 
-    // button.props().onClick();
-
-    // wrapper
-    // .find(".add")
-    // .at(0)
-    // .simulate("click");
-
-    // act(() => {
-    //   add.dispatchEvent(new MouseEvent("click"));
-    // });
-
-    // console.log(calculator.debug());
-    expect(input0.value).toEqual("1");
-    expect(input1.value).toEqual("1");
-    expect(result.textContent).toEqual("2");
+  act(() => {
+    ReactDOM.render(<Calculator />, container);
   });
 
-  xit("subtract function working", () => {
-    input0.value = 1;
-    input1.value = 1;
+  const buttons = container.querySelectorAll("button");
+  const spans = container.querySelectorAll("span");
+  const [increaseButton, decreaseButton] = buttons;
+  const [label, count] = spans;
 
-    expect(input0.value).toEqual("1");
-    expect(input1.value).toEqual("1");
+  xit("renders and has initial count", () => {
+    expect(label.textContent).toEqual("Count");
+    expect(count.textContent).toEqual("0");
+  });
 
+  xit("increases the count", () => {
     act(() => {
-      add.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+      increaseButton.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     });
+    expect(count.textContent).toEqual("1");
+  });
 
-    expect(result.textContent).toEqual("2");
+  xit("decreases the count", () => {
+    act(() => {
+      decreaseButton.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    });
+    expect(count.textContent).toEqual("0");
   });
 });
