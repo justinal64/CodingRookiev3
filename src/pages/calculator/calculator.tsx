@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { Button, TextField } from "@material-ui/core";
 import "../../styles/Calculator.css";
-import { Add, Subtract, Multiply, Divide } from "../../helper.js/helper";
+import {
+  Add,
+  Subtract,
+  Multiply,
+  Divide,
+  IsNumber
+} from "../../helper.js/helper";
 let buggyInitialState: any = 0;
 
 export const Calculator = () => {
@@ -9,28 +15,17 @@ export const Calculator = () => {
   const [input1, setInput1] = useState(0);
   const [input2, setInput2] = useState(buggyInitialState);
   const [input3, setInput3] = useState(buggyInitialState);
-  const [counter, updateCount] = useState(0);
   let [result, setResult] = useState(0);
-
-  // function to check data
-  let verifyInput = (): Boolean => {
-    if (!isNaN(input0) && !isNaN(input1)) {
-      return true;
-    } else {
-      return false;
-    }
-  };
 
   return (
     <div className="calculator">
       <div>
         <h2>Calculator working correctly</h2>
         <Button
-          className="add"
           variant="contained"
           color="primary"
           onClick={() => {
-            if (verifyInput()) Add(input0, input1);
+            if (IsNumber(input0, input1)) Add(input0, input1);
           }}
         >
           Add
@@ -39,7 +34,7 @@ export const Calculator = () => {
           variant="contained"
           color="primary"
           onClick={() => {
-            if (verifyInput()) Subtract(input0, input1);
+            if (IsNumber(input0, input1)) Subtract(input0, input1);
           }}
         >
           Subtract
@@ -48,7 +43,7 @@ export const Calculator = () => {
           variant="contained"
           color="primary"
           onClick={() => {
-            if (verifyInput()) Multiply(input0, input1);
+            if (IsNumber(input0, input1)) Multiply(input0, input1);
           }}
         >
           Multiply
@@ -57,7 +52,7 @@ export const Calculator = () => {
           variant="contained"
           color="primary"
           onClick={() => {
-            if (verifyInput()) Divide(input0, input1);
+            if (IsNumber(input0, input1)) Divide(input0, input1);
           }}
         >
           Divide

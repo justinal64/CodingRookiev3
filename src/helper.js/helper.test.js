@@ -113,7 +113,36 @@ describe("Testing Calculator logic functions", () => {
 
     // Talk about this
     it("With empty strings", () => {
-      expect(Helpers.Divide("", "")).toBe(NaN);
+      expect(Helpers.Divide("", "")).toBeNaN();
+    });
+  });
+
+  describe("IsNumber function", () => {
+    it("With positive numbers", () => {
+      expect(Helpers.IsNumber(1, 2)).toBe(true);
+    });
+
+    it("With negative numbers", () => {
+      expect(Helpers.IsNumber(-1, -2)).toBe(true);
+    });
+
+    // Talk about this
+    it("With strings", () => {
+      expect(Helpers.IsNumber("1", "2")).toBe(true);
+    });
+
+    // Because false = 0 and True = 1
+    it("With boolean", () => {
+      expect(Helpers.IsNumber(false, true)).toBe(true);
+    });
+
+    it("With decimal", () => {
+      expect(Helpers.IsNumber(2.2, 3.2)).toBe(true);
+    });
+
+    // Talk about this
+    it("With empty strings", () => {
+      expect(Helpers.IsNumber("", "")).toBe(true);
     });
   });
 });

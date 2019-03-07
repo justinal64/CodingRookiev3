@@ -58,4 +58,19 @@ describe("Testing Calculator logic functions", () => {
       expect(Helpers.Divide(2.2, 3.2)).toBe(0.6875);
     });
   });
+
+  // Using ts the only values I can pass to the function are numbers, so it will always be true
+  describe("IsNumber function", () => {
+    it("With positive numbers", () => {
+      expect(Helpers.IsNumber(1, 2)).toBe(true);
+    });
+
+    it("With negative numbers", () => {
+      expect(Helpers.IsNumber(-1, -2)).toBe(true);
+    });
+
+    it("With decimal", () => {
+      expect(Helpers.IsNumber(2.2, 3.2)).toBe(true);
+    });
+  });
 });

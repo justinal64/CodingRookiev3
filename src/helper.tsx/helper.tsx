@@ -15,4 +15,13 @@ let Divide = (num: number, num2: number) => {
   return num / num2;
 };
 
-export { Add, Subtract, Multiply, Divide };
+// function to check data
+let IsNumber = (num: number, num2: number) => {
+  if (!isNaN(num) && !isNaN(num2)) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export { Add, Subtract, Multiply, Divide, IsNumber };
