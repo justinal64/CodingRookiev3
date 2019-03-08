@@ -30,12 +30,11 @@ describe("Calculator with React test utils", () => {
   });
 
   it("Should render complete html", () => {
-    const wrapper = shallow(<Calculator />);
     expect(
       render(<Calculator />)
         .find(".result")
         .text()
-    ).toBe("Result is 0");
+    ).toBe("0");
   });
 
   it("change input values", () => {
@@ -54,24 +53,24 @@ describe("Counter with React test utils", () => {
   act(() => {
     ReactDOM.render(<Calculator />, container);
   });
+  const wrapper = shallow(<Calculator />);
 
-  const buttons = container.querySelectorAll("button");
-  const result = document.querySelector(".result span");
+  const add = container.querySelector("button");
+  const result = document.querySelector(".result");
   const inputs = document.querySelectorAll("input");
-  const [input0, input1, input2, input3] = inputs;
-  const [add, buggyAdd] = buttons;
-
+  const [input0, input1] = inputs;
+  const mockFn = jest.fn();
   it("renders and has initial count", () => {
     // expect(label.textContent).toEqual("Count");
     expect(result.textContent).toEqual("0");
   });
 
-  it("increases the count", () => {
-    act(() => {
-      // input0.dispatchEvent(new MouseEvent("onChange", { bubbles: true }));
-      // input1.dispatchEvent(new MouseEvent("onChange", { bubbles: true }));
-      add.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    });
-    expect(result.textContent).toEqual("1");
+  xit("increases the count", () => {
+    const passwordInput = wrapper.find("input").at(1);
+    passwordInput.instance().value = "y";
+    passwordInput.simulate("change");
+
+    expect(passwordInput.value).toBe("y");
+    // component.find('form').first().simulate('submit');
   });
 });
