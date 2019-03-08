@@ -17,59 +17,35 @@ export const Calculator = () => {
   const [input3, setInput3] = useState(buggyInitialState);
   let [result, setResult] = useState(0);
 
+  const test = () => {
+    setInput0(parseInt("1"));
+    setInput1(parseInt("1"));
+    Result(Add(input0, input1));
+  };
+
+  let Result = (value: any) => {
+    setResult(value);
+  };
   return (
     <div className="calculator">
       <div>
         <h2>Calculator working correctly</h2>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => {
-            if (IsNumber(input0, input1)) Add(input0, input1);
-          }}
-        >
-          Add
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => {
-            if (IsNumber(input0, input1)) Subtract(input0, input1);
-          }}
-        >
-          Subtract
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => {
-            if (IsNumber(input0, input1)) Multiply(input0, input1);
-          }}
-        >
-          Multiply
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => {
-            if (IsNumber(input0, input1)) Divide(input0, input1);
-          }}
-        >
-          Divide
-        </Button>
+        <button type="button" className="btn btn-success" onClick={test}>
+          +
+        </button>
         <div>
           <input
             className="input0"
             value={input0}
             onChange={e => {
-              if (e.target.value) setInput0(parseInt(e.target.value));
+              if (true) setInput0(parseInt("1"));
             }}
           />
           <input
             className="input1"
             value={input1}
             onChange={e => {
-              if (e.target.value) setInput1(parseInt(e.target.value));
+              if (true) setInput1(parseInt("1"));
             }}
           />
         </div>
@@ -77,43 +53,22 @@ export const Calculator = () => {
       <div>
         <div>
           {/* Do not use the validateInput function with this section */}
-          <h2>Calculator with bugs</h2>
+          <h2>Calculator with bug</h2>
           <Button
             variant="contained"
             color="primary"
-            onClick={() => Add(input2, input3)}
+            onClick={() => Result(Add(input2, input3))}
           >
             Add
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => Subtract(input2, input3)}
-          >
-            Subtract
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => Multiply(input2, input3)}
-          >
-            Multiply
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => Divide(input2, input3)}
-          >
-            Divide
           </Button>
           <div>
             <input
               value={input2}
               onChange={e => {
-                setInput2(e.target.value);
+                setInput2(1);
               }}
             />
-            <input value={input3} onChange={e => setInput3(e.target.value)} />
+            <input value={input3} onChange={e => setInput3(1)} />
           </div>
         </div>
         <div className="result">

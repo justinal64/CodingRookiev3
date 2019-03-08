@@ -31,9 +31,6 @@
         "extends": "react-app"
     },
     "jest": {
-        "setupFiles": [
-            "test/setup.js"
-        ],
         "snapshotSerializers": [
             "enzyme-to-json/serializer"
         ]

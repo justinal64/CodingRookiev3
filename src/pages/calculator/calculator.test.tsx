@@ -56,26 +56,22 @@ describe("Counter with React test utils", () => {
   });
 
   const buttons = container.querySelectorAll("button");
-  const spans = container.querySelectorAll("span");
-  const [increaseButton, decreaseButton] = buttons;
-  const [label, count] = spans;
+  const result = document.querySelector(".result span");
+  const inputs = document.querySelectorAll("input");
+  const [input0, input1, input2, input3] = inputs;
+  const [add, buggyAdd] = buttons;
 
-  xit("renders and has initial count", () => {
-    expect(label.textContent).toEqual("Count");
-    expect(count.textContent).toEqual("0");
+  it("renders and has initial count", () => {
+    // expect(label.textContent).toEqual("Count");
+    expect(result.textContent).toEqual("0");
   });
 
-  xit("increases the count", () => {
+  it("increases the count", () => {
     act(() => {
-      increaseButton.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+      // input0.dispatchEvent(new MouseEvent("onChange", { bubbles: true }));
+      // input1.dispatchEvent(new MouseEvent("onChange", { bubbles: true }));
+      add.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     });
-    expect(count.textContent).toEqual("1");
-  });
-
-  xit("decreases the count", () => {
-    act(() => {
-      decreaseButton.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    });
-    expect(count.textContent).toEqual("0");
+    expect(result.textContent).toEqual("1");
   });
 });
