@@ -33,15 +33,13 @@ import { string } from "prop-types";
 //   rocket: {};
 // }
 
-interface spacex {}
-
 export function useFetch() {
   const [data, setData] = useState(null);
 
   const setSpacexData = (newData: any) => setData(newData);
 
-  useEffect(() => {
-    fetch("https://api.spacexdata.com/v3/launches/latest") // runs command from the public folder.
+  const getData = () => {
+    fetch("https://api.spacexdata.com/v3/launches/latest")
       .then(res => res.json())
       .then(data => {
         let tempArray: any = [];
@@ -50,6 +48,10 @@ export function useFetch() {
         });
         setSpacexData(tempArray);
       });
+  };
+
+  useEffect(() => {
+    getData();
   }, []);
 
   return data;

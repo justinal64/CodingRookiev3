@@ -48,19 +48,20 @@ describe("Counter", () => {
       instance = wrapper.instance();
     });
 
-    it("calling increaseCount updates counter", () => {
+    xit("calling increaseCount updates counter", () => {
       // Arrange
       // instance.increaseCount();
       // const instance = wrapper.instance();
       // console.log("instance: ", instance.debug());
       const counterSpan = wrapper.find("span").at(1);
       wrapper.increaseCount;
+
       console.log("wrapper: ", wrapper.debug());
       // if you log span you will get ReactWrapper{}
       // console.log(span.debug());
 
       // Assert
-      expect(counterSpan.text()).toBe("0");
+      expect(counterSpan.text()).toBe("12132321");
     });
   });
 

@@ -14,8 +14,8 @@ export const Calculator = () => {
   const [input, setInput] = useState(0);
   const [input1, setInput1] = useState(0);
 
-  const setInputZero = e => setInput(parseInt("1"));
-  const setInputOne = e => setInput1(parseInt("1"));
+  const setInputZero = e => setInput(e.target.value);
+  const setInputOne = e => setInput1(e.target.value);
   const getResult = () => setResult(input + input1);
 
   return (
