@@ -30,12 +30,11 @@ describe("Calculator with React test utils", () => {
   });
 
   it("Should render complete html", () => {
-    const wrapper = shallow(<Calculator />);
     expect(
       render(<Calculator />)
         .find(".result")
         .text()
-    ).toBe("Result is 0");
+    ).toBe("0");
   });
 
   it("change input values", () => {
@@ -45,43 +44,33 @@ describe("Calculator with React test utils", () => {
     expect(input0.value).toEqual("1");
     expect(input1.value).toEqual("1");
   });
+});
 
-  it("add function working", () => {
-    const wrapper = mount(<Calculator />);
-    const button = wrapper.find("button").at(0);
-    input0.value = 1;
-    input1.value = 1;
-    // neither one works
-    // button.simulate("click");
+describe("Counter with React test utils", () => {
+  const container = document.createElement("div");
+  document.body.appendChild(container);
 
-    // button.props().onClick();
+  act(() => {
+    ReactDOM.render(<Calculator />, container);
+  });
+  const wrapper = shallow(<Calculator />);
 
-    // wrapper
-    // .find(".add")
-    // .at(0)
-    // .simulate("click");
-
-    // act(() => {
-    //   add.dispatchEvent(new MouseEvent("click"));
-    // });
-
-    // console.log(calculator.debug());
-    expect(input0.value).toEqual("1");
-    expect(input1.value).toEqual("1");
-    expect(result.textContent).toEqual("2");
+  const add = container.querySelector("button");
+  const result = document.querySelector(".result");
+  const inputs = document.querySelectorAll("input");
+  const [input0, input1] = inputs;
+  const mockFn = jest.fn();
+  it("renders and has initial count", () => {
+    // expect(label.textContent).toEqual("Count");
+    expect(result.textContent).toEqual("0");
   });
 
-  xit("subtract function working", () => {
-    input0.value = 1;
-    input1.value = 1;
+  xit("increases the count", () => {
+    const passwordInput = wrapper.find("input").at(1);
+    passwordInput.instance().value = "y";
+    passwordInput.simulate("change");
 
-    expect(input0.value).toEqual("1");
-    expect(input1.value).toEqual("1");
-
-    act(() => {
-      add.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-    });
-
-    expect(result.textContent).toEqual("2");
+    expect(passwordInput.value).toBe("y");
+    // component.find('form').first().simulate('submit');
   });
 });
