@@ -1,7 +1,7 @@
 import * as Helpers from "./helper"; // talk about why I imported it this way
 
 describe("Testing Calculator logic functions", () => {
-  describe("Add function", () => {
+  describe("Add()", () => {
     it("With positive numbers", () => {
       expect(Helpers.Add(1, 2)).toBe(3);
     });
@@ -30,7 +30,7 @@ describe("Testing Calculator logic functions", () => {
     });
   });
 
-  describe("Subtract function", () => {
+  describe("Subtract()", () => {
     it("With positive numbers", () => {
       expect(Helpers.Subtract(1, 2)).toBe(-1);
     });
@@ -59,7 +59,7 @@ describe("Testing Calculator logic functions", () => {
     });
   });
 
-  describe("Multiply function", () => {
+  describe("Multiply()", () => {
     it("With positive numbers", () => {
       expect(Helpers.Multiply(1, 2)).toBe(2);
     });
@@ -88,7 +88,7 @@ describe("Testing Calculator logic functions", () => {
     });
   });
 
-  describe("Divide function", () => {
+  describe("Divide()", () => {
     it("With positive numbers", () => {
       expect(Helpers.Divide(1, 2)).toBe(0.5);
     });
@@ -117,7 +117,7 @@ describe("Testing Calculator logic functions", () => {
     });
   });
 
-  describe("IsNumber function", () => {
+  describe("IsNumber()", () => {
     it("With positive numbers", () => {
       expect(Helpers.IsNumber(1, 2)).toBe(true);
     });
@@ -143,6 +143,63 @@ describe("Testing Calculator logic functions", () => {
     // Talk about this
     it("With empty strings", () => {
       expect(Helpers.IsNumber("", "")).toBe(true);
+    });
+  });
+
+  describe("GetData()", () => {
+    let spyOnGetData = jest.fn();
+
+    //TODO: Talk about these after I explain what is going on below
+    beforeEach(() => {
+      spyOnGetData = jest.spyOn(Helpers, "GetData");
+    });
+
+    afterEach(() => {
+      spyOnGetData.mockReset();
+    });
+
+    it("launch_year is 2019", async () => {
+      // TODO: These do the exact same thing
+      // return Helpers.GetData().then(data => {
+      //   expect(data["launch_year"]).toBe("2019");
+      // });
+
+      const result = await Helpers.GetData();
+      expect(result["launch_year"]).toBe("2019");
+    });
+
+    it("spyOn works on async functions", async () => {
+      // spyOnGetData is spying on Helpers.GetData()
+      await Helpers.GetData();
+      expect(spyOnGetData).toBeCalledTimes(1);
+    });
+
+    // TODO: The data coming back from my api changes, how do I test my api?
+    it("spyOn returns mock data", async () => {
+      spyOnGetData.mockResolvedValue(21);
+      return Helpers.GetData().then(data => {
+        // TODO: talk about why this check is here.... hint. look at afterEach;
+        expect(spyOnGetData).toBeCalledTimes(1);
+        expect(data).toBe(21);
+      });
+    });
+
+    // Why is this returning undefined....
+    xit("GetData() throws an error", async () => {
+      // spyOnGetData.mockImplementation(() => {
+      //   throw new Error();
+      // });
+      // console.log();
+      const result = await Helpers.GetData();
+      console.log("result: ", result);
+      // return Helpers.GetData().then(data => {
+      //   console.log(data);
+      // });
+      // const result = await Helpers.GetData("gfiaegafhbjk");
+      // console.log("result: ", result);
+      // await expect(Helpers.GetData("This is a bad url")).rejects.toThrow(
+      //   "error"
+      // );
     });
   });
 });
