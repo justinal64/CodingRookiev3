@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useFetch } from "../../components/customHooks/useFetch/useFetch";
 import "../../styles/SpaceX.css";
+import { GetData } from "../../helper.js/helper";
 
 export const SpaceX = () => {
   const data = useFetch();
+
+  GetData().then(response => {
+    console.log(response);
+  });
 
   if (data) {
     console.log("data = ", data);

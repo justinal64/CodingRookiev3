@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { string } from "prop-types";
 
 // export interface spacex {
 //   details: string;
@@ -47,6 +46,7 @@ export function useFetch() {
           tempArray.push(ele);
         });
         setSpacexData(tempArray);
+        return tempArray; // needed for testing...
       });
   };
 
