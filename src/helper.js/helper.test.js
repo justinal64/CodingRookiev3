@@ -1,24 +1,23 @@
 import * as Helpers from "./helper"; // talk about why I imported it this way
-
-describe("Testing Calculator logic functions", () => {
+describe("Testing Calculator's logic", () => {
   describe("Add()", () => {
     it("With positive numbers", () => {
       expect(Helpers.Add(1, 2)).toBe(3);
     });
 
     it("With negative numbers", () => {
-      const spyOnAdd = jest.spyOn(Helpers, "Add");
+      // const spyOnAdd = jest.spyOn(Helpers, "Add");
       expect(Helpers.Add(-1, -2)).toBe(-3);
-      expect(spyOnAdd).toHaveBeenCalledTimes(1);
+      // expect(spyOnAdd).toHaveBeenCalledTimes(1);
     });
 
     it("With strings", () => {
-      expect(Helpers.Add("1", "2")).toBe("12");
+      expect(Helpers.Add("1", "2")).toBe(3);
     });
 
-    // Because false = 0 and True = 1
+    // Neither value is a numeric value
     it("With boolean", () => {
-      expect(Helpers.Add(false, true)).toBe(1);
+      expect(Helpers.Add(false, true)).toBe(0);
     });
 
     it("With decimal", () => {
@@ -26,7 +25,7 @@ describe("Testing Calculator logic functions", () => {
     });
 
     it("With empty strings", () => {
-      expect(Helpers.Add("", "")).toBe("");
+      expect(Helpers.Add("", "")).toBe(0);
     });
   });
 
@@ -155,7 +154,9 @@ describe("Testing Calculator logic functions", () => {
     });
 
     afterEach(() => {
-      spyOnGetData.mockReset();
+      // spyOnGetData.mockClear();
+      jest.clearAllMocks();
+      // spyOnGetData.mockReset();
     });
 
     it("launch_year is 2019", async () => {
@@ -174,32 +175,31 @@ describe("Testing Calculator logic functions", () => {
       expect(spyOnGetData).toBeCalledTimes(1);
     });
 
-    // TODO: The data coming back from my api changes, how do I test my api?
-    it("spyOn returns mock data", async () => {
-      spyOnGetData.mockResolvedValue(21);
-      return Helpers.GetData().then(data => {
-        // TODO: talk about why this check is here.... hint. look at afterEach;
-        expect(spyOnGetData).toBeCalledTimes(1);
-        expect(data).toBe(21);
-      });
+    // That's a cool trick if you can pass a url....
+    it("GetData() throws an error", async () => {
+      const expectedResult = "I think the url is wrong...";
+      const result = await Helpers.GetData(
+        "https://jsonplaceholder.typicode.com/404"
+      );
+      expect(result).toBe(expectedResult);
     });
 
-    // Why is this returning undefined....
-    xit("GetData() throws an error", async () => {
-      // spyOnGetData.mockImplementation(() => {
-      //   throw new Error();
-      // });
-      // console.log();
-      const result = await Helpers.GetData();
-      console.log("result: ", result);
-      // return Helpers.GetData().then(data => {
-      //   console.log(data);
-      // });
-      // const result = await Helpers.GetData("gfiaegafhbjk");
-      // console.log("result: ", result);
-      // await expect(Helpers.GetData("This is a bad url")).rejects.toThrow(
-      //   "error"
-      // );
+    // it("GetData() try to simulate catch...", async () => {
+    //   const expectedResult = "I think the url is wrong";
+    //   const result = await Helpers.GetData(
+    //     "https://jsonplaceholder.typicode.com/404"
+    //   );
+    //   expect(result).toBe(expectedResult);
+    // });
+
+    // TODO: The data coming back from my api changes, what do I do?
+    // TODO: I have to put this here because the tests above were receiving 21 as the result.....
+    it("spyOn returns mock data", async () => {
+      spyOnGetData.mockResolvedValue(21);
+      let result = await Helpers.GetData();
+      //   // TODO: talk about why this check is here.... hint. look at afterEach;
+      expect(spyOnGetData).toBeCalledTimes(1);
+      expect(result).toBe(21);
     });
   });
 });
