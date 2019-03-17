@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./button";
+import ConnectedButton, { Button } from "./button"; // {button} is the anmes export ConnectedButton is the default export
 import renderer from "react-test-renderer";
 import { mount } from "enzyme";
 

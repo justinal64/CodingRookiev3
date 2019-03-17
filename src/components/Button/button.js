@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-class Button extends Component {
+export class Button extends Component {
   state = {
     counter: 0
   };
@@ -37,4 +38,4 @@ Button.propTypes = {
   label: PropTypes.string
 };
 
-export default Button;
+export default connect() (Button);

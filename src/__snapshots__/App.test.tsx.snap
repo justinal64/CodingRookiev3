@@ -59,6 +59,11 @@ exports[`should render correctly with no props 1`] = `
       />
       <Route
         component={[Function]}
+        exact={true}
+        path="/redux"
+      />
+      <Route
+        component={[Function]}
       />
     </Switch>
   </div>

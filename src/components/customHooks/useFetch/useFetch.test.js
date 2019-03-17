@@ -87,11 +87,14 @@ import { useFetchPres } from "./useFetchPres";
 
 describe("<useFetch />", () => {
   xit("doesn't explode with a workaround", () => {
-    const renderer = new ShallowRenderer();
-    renderer.render(<useFetchPres show closeFn={jest.fn()} t={key => key} />);
-    const output = renderer.getRenderOutput();
-    const wrapper = shallow(<div>{output}</div>); // Have to wrap it, otherwise you get: TypeError: ShallowWrapper can only wrap valid elements
-    console.log("wrapper: ", wrapper.debug());
-    expect(wrapper).toMatchSnapshot();
+    // const renderer = new ShallowRenderer();
+    // renderer.render(<useFetchPres show closeFn={jest.fn()} t={key => key} />);
+
+    // const output = renderer.getRenderOutput();
+    // const wrapper = shallow(<div>{output}</div>); // Have to wrap it, otherwise you get: TypeError: ShallowWrapper can only wrap valid elements
+    // console.log("wrapper: ", wrapper.debug());
+    // expect(wrapper).toMatchSnapshot();
+
+    const { container, rerender } = render(<useFetch> </useFetch>);
   });
 });

@@ -63,6 +63,9 @@ function Navigation(props: Props) {
           <Button color="inherit">
             <Link to="/login">Login</Link>
           </Button>
+          <Button color="inherit">
+            <Link to="/redux">Redux</Link>
+          </Button>
         </Toolbar>
       </AppBar>
     </div>

@@ -15,9 +15,9 @@ import { About } from "./pages/about/about";
 import { NoMatch } from "./pages/nomatch/nomatch";
 import { SpaceX } from "./pages/spacex/spacex";
 import { Calculator } from "./pages/calculator/calculator";
+import { Redux } from "./pages/redux/redux";
 
 export function App() {
-  let tester = useMath([1, 2, 3, 4, 5], "add");
   return (
     <Router>
       <div className="App">
@@ -33,6 +33,7 @@ export function App() {
           <Route exact path="/about" component={About} />
           <Route exact path="/spacex" component={SpaceX} />
           <Route exact path="/calculator" component={Calculator} />
+          <Route exact path="/redux" component={Redux} />
           <Route component={NoMatch} />
         </Switch>
       </div>
