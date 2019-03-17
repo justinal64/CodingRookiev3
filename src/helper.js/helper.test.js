@@ -14,9 +14,7 @@ describe("Testing Calculator's logic", () => {
     });
 
     it("With negative numbers", () => {
-      // const spyOnAdd = jest.spyOn(Helpers, "Add");
       expect(Helpers.Add(-1, -2)).toBe(-3);
-      // expect(spyOnAdd).toHaveBeenCalledTimes(1);
     });
 
     it("With strings", () => {
@@ -162,9 +160,7 @@ describe("Testing Calculator's logic", () => {
     });
 
     afterEach(() => {
-      // spyOnGetData.mockClear();
       jest.clearAllMocks();
-      // spyOnGetData.mockReset();
     });
 
     it("launch_year is 2019", async () => {
@@ -183,7 +179,7 @@ describe("Testing Calculator's logic", () => {
       expect(spyOnGetData).toBeCalledTimes(1);
     });
 
-    // That's a cool trick if you can pass a url....
+    // This is a cool trick to intentionally fail the test
     it("GetData() throws an error", async () => {
       const expectedResult = "I think the url is wrong...";
       const result = await Helpers.GetData(FourZeroFourlUrl);
@@ -199,14 +195,8 @@ describe("Testing Calculator's logic", () => {
       expect(result).toBe(21);
     });
   });
+
   describe("Concat()", () => {
-    let spyOnConcat = jest.fn();
-
-    //TODO: Talk about these after I explain what is going on below
-    beforeEach(() => {
-      spyOnConcat = jest.spyOn(Helpers, "Concat");
-    });
-
     afterEach(() => {
       jest.clearAllMocks();
     });
@@ -223,23 +213,16 @@ describe("Testing Calculator's logic", () => {
   });
 
   describe("NeverDoThis()", () => {
-    let spyOnConcat = jest.fn();
-
-    //TODO: Talk about these after I explain what is going on below
-    beforeEach(() => {
-      spyOnConcat = jest.spyOn(Helpers, "NeverDoThis");
-    });
-
     afterEach(() => {
       jest.clearAllMocks();
     });
 
-    it("Passing values from mock data", () => {
+    it("Testing 1 value in an array", () => {
       let result = Helpers.NeverDoThis(NumToAdd, NumToSub, NumToDiv, NumToMul);
       expect(result[0]).toBe(3);
     });
 
-    it("Passing values from mock data", () => {
+    it("Compare all items in array", () => {
       let result = Helpers.NeverDoThis(NumToAdd, NumToSub, NumToDiv, NumToMul);
       // TODO: explain why this doesn't work.
       // expect(result).toBe([3, -1, 0.875, 30]);
@@ -265,7 +248,7 @@ describe("Testing Calculator's logic", () => {
       expect(result).toBeLessThanOrEqual(100);
     });
 
-    it("Number within a certain range", () => {
+    it("Mocking the return value", () => {
       spyOnRandomApiKey.mockReturnValue(21);
       let result = Helpers.RandomApiKey(100);
       expect(result).toBe(21);

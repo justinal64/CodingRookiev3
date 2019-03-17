@@ -1,7 +1,7 @@
 const Add = (num, num2) => {
   let val = isNaN(parseFloat(num)) ? 0 : parseFloat(num);
   let val2 = isNaN(parseFloat(num2)) ? 0 : parseFloat(num2);
-  return parseFloat(val) + parseFloat(val2);
+  return val + val2;
 };
 
 // const Add = (num, num2) => {
