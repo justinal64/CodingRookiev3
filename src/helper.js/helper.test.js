@@ -1,4 +1,12 @@
 import * as Helpers from "./helper"; // talk about why I imported it this way
+import {
+  ArrayOfStrings,
+  FourZeroFourlUrl,
+  NumToAdd,
+  NumToDiv,
+  NumToMul,
+  NumToSub
+} from "../__mock__/mockdata";
 describe("Testing Calculator's logic", () => {
   describe("Add()", () => {
     it("With positive numbers", () => {
@@ -6,9 +14,7 @@ describe("Testing Calculator's logic", () => {
     });
 
     it("With negative numbers", () => {
-      // const spyOnAdd = jest.spyOn(Helpers, "Add");
       expect(Helpers.Add(-1, -2)).toBe(-3);
-      // expect(spyOnAdd).toHaveBeenCalledTimes(1);
     });
 
     it("With strings", () => {
@@ -154,9 +160,7 @@ describe("Testing Calculator's logic", () => {
     });
 
     afterEach(() => {
-      // spyOnGetData.mockClear();
       jest.clearAllMocks();
-      // spyOnGetData.mockReset();
     });
 
     it("launch_year is 2019", async () => {
@@ -175,30 +179,78 @@ describe("Testing Calculator's logic", () => {
       expect(spyOnGetData).toBeCalledTimes(1);
     });
 
-    // That's a cool trick if you can pass a url....
+    // This is a cool trick to intentionally fail the test
     it("GetData() throws an error", async () => {
       const expectedResult = "I think the url is wrong...";
-      const result = await Helpers.GetData(
-        "https://jsonplaceholder.typicode.com/404"
-      );
+      const result = await Helpers.GetData(FourZeroFourlUrl);
       expect(result).toBe(expectedResult);
     });
 
-    // it("GetData() try to simulate catch...", async () => {
-    //   const expectedResult = "I think the url is wrong";
-    //   const result = await Helpers.GetData(
-    //     "https://jsonplaceholder.typicode.com/404"
-    //   );
-    //   expect(result).toBe(expectedResult);
-    // });
-
     // TODO: The data coming back from my api changes, what do I do?
-    // TODO: I have to put this here because the tests above were receiving 21 as the result.....
     it("spyOn returns mock data", async () => {
       spyOnGetData.mockResolvedValue(21);
       let result = await Helpers.GetData();
       //   // TODO: talk about why this check is here.... hint. look at afterEach;
       expect(spyOnGetData).toBeCalledTimes(1);
+      expect(result).toBe(21);
+    });
+  });
+
+  describe("Concat()", () => {
+    afterEach(() => {
+      jest.clearAllMocks();
+    });
+
+    it("Concat('a','b')", () => {
+      let result = Helpers.Concat("a", "b");
+      expect(result).toBe("ab");
+    });
+
+    it("using data in mock data file", () => {
+      let result = Helpers.Concat(ArrayOfStrings[0], ArrayOfStrings[1]);
+      expect(result).toBe("Thisis");
+    });
+  });
+
+  describe("NeverDoThis()", () => {
+    afterEach(() => {
+      jest.clearAllMocks();
+    });
+
+    it("Testing 1 value in an array", () => {
+      let result = Helpers.NeverDoThis(NumToAdd, NumToSub, NumToDiv, NumToMul);
+      expect(result[0]).toBe(3);
+    });
+
+    it("Compare all items in array", () => {
+      let result = Helpers.NeverDoThis(NumToAdd, NumToSub, NumToDiv, NumToMul);
+      // TODO: explain why this doesn't work.
+      // expect(result).toBe([3, -1, 0.875, 30]);
+      expect(result).toEqual([3, -1, 0.875, 30]);
+    });
+  });
+
+  describe("RandomApiKey()", () => {
+    let spyOnRandomApiKey = jest.fn();
+
+    //TODO: Talk about these after I explain what is going on below
+    beforeEach(() => {
+      spyOnRandomApiKey = jest.spyOn(Helpers, "RandomApiKey");
+    });
+
+    afterEach(() => {
+      jest.clearAllMocks();
+    });
+
+    it("Number within a certain range", () => {
+      let result = Helpers.RandomApiKey(100);
+      expect(result).toBeGreaterThanOrEqual(0);
+      expect(result).toBeLessThanOrEqual(100);
+    });
+
+    it("Mocking the return value", () => {
+      spyOnRandomApiKey.mockReturnValue(21);
+      let result = Helpers.RandomApiKey(100);
       expect(result).toBe(21);
     });
   });

@@ -1,7 +1,7 @@
 const Add = (num, num2) => {
   let val = isNaN(parseFloat(num)) ? 0 : parseFloat(num);
   let val2 = isNaN(parseFloat(num2)) ? 0 : parseFloat(num2);
-  return parseFloat(val) + parseFloat(val2);
+  return val + val2;
 };
 
 // const Add = (num, num2) => {
@@ -34,7 +34,6 @@ const GetData = async url => {
     url || "https://api.spacexdata.com/v3/launches/latest",
     {}
   ).catch(error => {
-    console.log("did this get called?");
     return error;
   });
   let data;
@@ -43,4 +42,36 @@ const GetData = async url => {
   return data;
 };
 
-export { Add, Subtract, Multiply, Divide, IsNumber, GetData };
+const Concat = (val, val2) => {
+  return val.concat(val2);
+};
+
+const NeverDoThis = (
+  [add1, add2],
+  [sub1, sub2],
+  [div1, div2],
+  [mul1, mul2]
+) => {
+  const add = add1 + add2;
+  const sub = sub1 - sub2;
+  const div = div1 / div2;
+  const mul = mul1 * mul2;
+
+  return [add, sub, div, mul];
+};
+
+const RandomApiKey = maxRange => {
+  return Math.floor(Math.random() * maxRange);
+};
+
+export {
+  Add,
+  Subtract,
+  Multiply,
+  Divide,
+  IsNumber,
+  GetData,
+  Concat,
+  NeverDoThis,
+  RandomApiKey
+};

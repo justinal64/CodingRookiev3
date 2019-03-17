@@ -14,7 +14,8 @@ describe("Button", () => {
       expect(instance.state.counter).toEqual(0);
     });
 
-    // Lets write a test that updates state
+    // TODO: Lets write a test that updates state
+    // TODO: talk about .debug()
   });
 
   describe("onClick", () => {
@@ -25,26 +26,21 @@ describe("Button", () => {
     let wrapper;
     let instance;
 
-    // TODO: What is beforeEach
     beforeEach(() => {
-      wrapper = mount(<Button onClick={() => {}} counter={2} />);
+      wrapper = mount(<Button onClick={() => {}} counter={0} />);
       instance = wrapper.instance();
     });
 
     // Arrange
-    it("onClick and than looking at state", () => {
+    it("clicking and than looking at state", () => {
       // TODO: Talk about .simulate
-      // Act
       wrapper.find("button").simulate("click");
-      // TODO: talk about .debug()
       // console.log(wrapper.debug());
-
-      // Assert
+      // Act/Assert
       expect(instance.state.counter).toBe(1);
     });
 
-    // Try to figure out how to spyOn this......
-    it("onClick and spyOn", () => {
+    it("simulate clicking 4 times", () => {
       // Arrange
       const button = wrapper.find("button");
       // Act
@@ -70,7 +66,7 @@ describe("Button", () => {
     });
 
     // TODO: This is how you test functions inside a component
-    it("ReturnsTrue() is called once", () => {
+    it("ReturnsTrue() reterns true", () => {
       // Act
       const result = instance.ReturnsTrue();
 
@@ -91,13 +87,11 @@ describe("Button", () => {
     });
   });
 
-  // using enzyme for rendering
   // checking that when the funtion is called state is correct
   describe("UpdateCounter()", () => {
     let wrapper;
     let instance;
 
-    // TODO: What is beforeEach
     beforeEach(() => {
       wrapper = mount(<Button onClick={() => {}} counter={2} />);
       instance = wrapper.instance();
@@ -106,11 +100,6 @@ describe("Button", () => {
     // show how I initially setup my test and what I do once I have completed a set of tests
     it("check state after calling UpdateCounter with no value", () => {
       // Arrange
-      // when rendering with shallow onClick must be passed
-      // in because it is marked as required
-      // TODO: pssst... I know your probably nervous but don't forget to remove the next 2 lines
-      const wrapper = mount(<Button onClick={() => {}} counter={2} />);
-      const instance = wrapper.instance();
       const spyOnUpdateCounter = jest.spyOn(instance, "UpdateCounter");
 
       // Act
@@ -157,6 +146,7 @@ describe("Button", () => {
     it("mocking the data coming back from UpdateCounter", () => {
       // Arrange
       const counterMock = jest.spyOn(instance, "UpdateCounter");
+      // TODO: what is mockImplementation???
       counterMock.mockImplementation(() => "I need more power!!!");
 
       // Act/Assert
@@ -164,6 +154,7 @@ describe("Button", () => {
 
       // remove the mock implementation from UpdateCounter()
       // ReArrange
+      // TODO: what does mockRestore do?
       counterMock.mockRestore();
       // Act
       instance.UpdateCounter(21);
@@ -183,6 +174,6 @@ describe("Button", () => {
       expect(component.toJSON()).toMatchSnapshot();
     });
 
-    // Lets create a snapshot
+    // TODO: Lets create a snapshot
   });
 });

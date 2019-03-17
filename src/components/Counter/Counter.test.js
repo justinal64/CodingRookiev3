@@ -118,7 +118,7 @@ describe("Counter", () => {
       // wrapper.setState({ Counter: 3 });
 
       // Assert
-      // TODO: What is span.text()
+      // TODO: What is counterSpan.text()
       expect(counterSpan.text()).toBe("0");
     });
   });
